@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cltq2o7me1i3m"]
+
+[ext_resource type="Texture2D" uid="uid://6qlinewt17ag" path="res://game assets/cannon_base.png" id="1_rjcem"]
+[ext_resource type="Script" uid="uid://hmatruru7gbp" path="res://Scripts/gun.gd" id="2_dcphh"]
+[ext_resource type="Texture2D" uid="uid://bjd3dsiea358b" path="res://game assets/cannon_head.png" id="3_abatf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ki3iq"]
+radius = 28.998732
+height = 93.99744
+
+[node name="GUN" type="Node2D"]
+position = Vector2(113, 285)
+
+[node name="BASE" type="Sprite2D" parent="."]
+texture = ExtResource("1_rjcem")
+
+[node name="GUN" type="CharacterBody2D" parent="."]
+script = ExtResource("2_dcphh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GUN"]
+position = Vector2(1.4305115e-06, -3.5762787e-06)
+rotation = -1.5720388
+shape = SubResource("CapsuleShape2D_ki3iq")
+
+[node name="Sprite2D" type="Sprite2D" parent="GUN"]
+texture = ExtResource("3_abatf")
+
+[node name="gun_tip" type="Node2D" parent="GUN"]
+position = Vector2(56, 2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="bullets_tip" type="Node2D" parent="."]
+position = Vector2(-54, -77)
+
+[connection signal="timeout" from="Timer" to="GUN" method="_on_timer_timeout"]

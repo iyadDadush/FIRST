@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm0ud6b0uvyni"]
+
+[ext_resource type="Texture2D" uid="uid://ctw2yto7boi0n" path="res://game assets/Fire_Bullet_Pixel_16x16.png" id="1_lg4ao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_643to"]
+radius = 8.0
+
+[node name="bullet" type="RigidBody2D" groups=["Bullets"]]
+mass = 0.001
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.5, 3.5)
+shape = SubResource("CircleShape2D_643to")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_lg4ao")

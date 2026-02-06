@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7m2l1yv6hkoc"]
+
+[ext_resource type="Texture2D" uid="uid://b4w5qtqdlniu5" path="res://game assets/big_pressed.png" id="1_6vwgy"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BigPressed" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(578.00006, 318)
+scale = Vector2(4.5538583, 4.986341)
+texture = ExtResource("1_6vwgy")

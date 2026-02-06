@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://v1v30ywxcob8"]
+
+[ext_resource type="Script" uid="uid://brt2epgs60mjt" path="res://Scripts/enemy.gd" id="1_ot4ua"]
+[ext_resource type="Texture2D" uid="uid://cflky1hnednnn" path="res://game assets/enemy/big_zombie_run_anim_f0.png" id="2_ecsty"]
+[ext_resource type="Texture2D" uid="uid://du6h7dprb6lj5" path="res://game assets/enemy/big_zombie_run_anim_f1.png" id="3_0n0ib"]
+[ext_resource type="Texture2D" uid="uid://bljpgho5y2wnn" path="res://game assets/enemy/big_zombie_run_anim_f2.png" id="4_64eeq"]
+[ext_resource type="Texture2D" uid="uid://bmc00pjg8mj4u" path="res://game assets/enemy/big_zombie_run_anim_f3.png" id="5_oqnxy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_618wn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6keb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ecsty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0n0ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_64eeq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oqnxy")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(994, 312)
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_ot4ua")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(0.9542883, 0.9542883)
+shape = SubResource("CapsuleShape2D_618wn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_k6keb")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.7040782
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.0114279, 1.0114279)
+shape = SubResource("CapsuleShape2D_618wn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
